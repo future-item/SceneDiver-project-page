@@ -72,6 +72,21 @@ function copyBibTeX() {
     }
 }
 
+// Method overview expand/collapse
+function expandMethodFlowchart() {
+    var toggle = document.getElementById('methodOverviewToggle');
+    var flowchart = document.getElementById('methodFlowchart');
+    toggle.style.display = 'none';
+    flowchart.style.display = '';
+}
+
+function collapseMethodFlowchart() {
+    var toggle = document.getElementById('methodOverviewToggle');
+    var flowchart = document.getElementById('methodFlowchart');
+    flowchart.style.display = 'none';
+    toggle.style.display = '';
+}
+
 // Scroll to top functionality
 function scrollToTop() {
     window.scrollTo({

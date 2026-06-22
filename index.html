@@ -395,82 +395,84 @@
       <p>SceneDiver uses deliberate VLM reasoning to progressively turn a cluttered observation into a task-focused visual input.</p>
     </div>
 
-    <div class="method-browser" aria-label="SceneDiver step-by-step method trace">
-      <div class="method-browser-bar">
-        <div class="method-browser-controls" aria-hidden="true">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="method-browser-address">scenediver.ai/method/focus-plan-generation</div>
+    <!-- Method overview image (click to expand flowchart) -->
+    <div class="method-overview-toggle" id="methodOverviewToggle" onclick="expandMethodFlowchart()">
+      <img src="static/images/method.png" alt="SceneDiver method overview - click for details" loading="lazy">
+      <div class="method-overview-overlay">
+        <span class="method-overview-hint"><i class="fas fa-search-plus"></i> Click for details</span>
       </div>
+    </div>
 
-      <div class="method-trace">
-        <article class="method-step">
-          <div class="method-step-copy">
-            <span class="method-step-index">Step 01</span>
-            <h3>Observe the scene and generate a global scene graph.</h3>
-            <p>The agent observes the raw scene and task context, and invokes OvSGTR to generate a coarse scene graph.</p>
-          </div>
-          <figure class="method-step-figure">
+    <div class="method-timeline" id="methodFlowchart" style="display: none;">
+      <div class="timeline-collapse" onclick="collapseMethodFlowchart()">
+        <i class="fas fa-compress-alt"></i> Collapse
+      </div>
+      <article class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <span class="timeline-step">Step 01</span>
+          <h3>Observe the scene and generate a global scene graph.</h3>
+          <p>The agent observes the raw scene and task context, and invokes OvSGTR to generate a coarse scene graph.</p>
+          <figure class="timeline-figure">
             <img src="static/images/method/1.png" alt="Observe the scene and generate a global scene graph." loading="lazy">
           </figure>
-        </article>
+        </div>
+      </article>
 
-        <article class="method-step">
-          <div class="method-step-copy">
-            <span class="method-step-index">Step 02</span>
-            <h3>Choose coarse focus regions</h3>
-            <p>High-level graph reasoning filters the scene into task-relevant sub-scenes instead of focusing in one jump.</p>
-          </div>
-          <figure class="method-step-figure">
+      <article class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <span class="timeline-step">Step 02</span>
+          <h3>Choose coarse focus regions</h3>
+          <p>High-level graph reasoning filters the scene into task-relevant sub-scenes instead of focusing in one jump.</p>
+          <figure class="timeline-figure">
             <img src="static/images/method/2.png" alt="Scene graph construction" loading="lazy">
           </figure>
-        </article>
+        </div>
+      </article>
 
-        <article class="method-step">
-          <div class="method-step-copy">
-            <span class="method-step-index">Step 03</span>
-            <h3>Fine stage: inspect candidates</h3>
-            <p>The selected regions are examined sequentially to verify candidate evidence under a limited perception field.</p>
-          </div>
-          <figure class="method-step-figure">
+      <article class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <span class="timeline-step">Step 03</span>
+          <h3>Fine stage: inspect candidates</h3>
+          <p>The selected regions are examined sequentially to verify candidate evidence under a limited perception field.</p>
+          <figure class="timeline-figure">
             <img src="static/images/method/3.png" alt="Fine-stage candidate inspection" loading="lazy">
           </figure>
-        </article>
-
-        <div class="method-zoom-connector" aria-label="Zoom from candidate inspection to local fine-grained inspection">
-          <div class="method-zoom-connector-visual">
-            <span>Zoom in</span>
-            <span class="method-zoom-arrow" aria-hidden="true">
-              <i class="fas fa-arrow-down"></i>
-            </span>
-          </div>
         </div>
+      </article>
 
-        <article class="method-step">
-          <div class="method-step-copy">
-            <span class="method-step-index">Step 04</span>
-            <h3>Zoomed local inspection</h3>
-            <p>SceneDiver zooms into the candidate region from the previous step to recover fine details and refine the focus decision.</p>
-          </div>
-          <figure class="method-step-figure">
+      <article class="timeline-item timeline-item-zoom">
+        <div class="timeline-marker timeline-marker-zoom"><i class="fas fa-search-plus"></i></div>
+        <div class="timeline-content">
+          <span class="timeline-zoom-label">Zoom in</span>
+        </div>
+      </article>
+
+      <article class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <span class="timeline-step">Step 04</span>
+          <h3>Zoomed local inspection</h3>
+          <p>SceneDiver zooms into the candidate region from the previous step to recover fine details and refine the focus decision.</p>
+          <figure class="timeline-figure">
             <img src="static/images/method/4.png" alt="Fine-grained scene inspection" loading="lazy">
           </figure>
-        </article>
+        </div>
+      </article>
 
-        <article class="method-step">
-          <div class="method-step-copy">
-            <span class="method-step-index">Step 05</span>
-            <h3>Summarize focus and act</h3>
-            <p>The verified focus evidence is aggregated into a soft mask, used to modify the observation, and then passed to the VLM or VLA for final decision making.</p>
-          </div>
-          <figure class="method-step-figure">
+      <article class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <span class="timeline-step">Step 05</span>
+          <h3>Summarize focus and act</h3>
+          <p>The verified focus evidence is aggregated into a soft mask, used to modify the observation, and then passed to the VLM or VLA for final decision making.</p>
+          <figure class="timeline-figure">
             <img src="static/images/method/5.png" alt="Focus-guided image modification for final decision making" loading="lazy">
           </figure>
-        </article>
-
-      </div>
+        </div>
+      </article>
     </div>
 
     <div class="method-section-heading method-section-heading-spaced">
